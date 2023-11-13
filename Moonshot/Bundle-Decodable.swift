@@ -51,6 +51,9 @@ extension Bundle {
         // now we try to decode the data into a dictionary
         
         let decoder = JSONDecoder()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "y-MM-dd"
+        decoder.dateDecodingStrategy = .formatted(formatter)
         
         guard let loadedData = try? decoder.decode(T.self, from: data) else {
             fatalError("Failed to decode the file.")
