@@ -11,13 +11,16 @@ struct ContentView: View {
     
     let astronauts: [String: Astronaut] = Bundle.main.decode("astronauts.json")
     let missions: [Mission] = Bundle.main.decode("missions.json")
-
+    @State var showList = false
     let columns = [
         GridItem(.adaptive(minimum: 150))
     ]
     
     var body: some View {
         NavigationStack{
+            if showList {
+                Text("SHOW AS A LIST PLEASE")
+            }
             ScrollView{
                 LazyVGrid(columns: columns) {
                     ForEach(missions) { mission in
@@ -50,9 +53,12 @@ struct ContentView: View {
                 }.padding([.horizontal, .bottom])
             }
             .navigationTitle("Moonshot")
+            .toolbar {
+                Toggle("List View", isOn: $showList)
+            }
             .background(.darkBackground)
             // you prefer dark mode
-            .preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+            .preferredColorScheme(.dark)
         }
     }
 }

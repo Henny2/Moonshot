@@ -38,21 +38,22 @@ struct MissionView: View {
                         .containerRelativeFrame(.horizontal) { width, axis in
                             width * 0.6
                         }
+                        .padding(.bottom)
                     VStack(alignment: .leading){
+                        Text("Launch date: \(mission.formattedLaunchDate)").font(.headline)
+                     
                         // putting a divider between badge image and hightlights
-                        Rectangle()
-                            .frame(height:2)
-                            .foregroundStyle(.lightBackground)
-                            .padding(.vertical)
+//                        Rectangle()
+//                            .frame(height:2)
+//                            .foregroundStyle(.lightBackground)
+//                            .padding(.vertical)
+                        DividerView()
                         Text("Mission Highlights")
                             .font(.title.bold())
                             .padding(.bottom, 5)
                         Text(mission.description)
                         // putting a divider between badge image and hightlights
-                        Rectangle()
-                            .frame(height:2)
-                            .foregroundStyle(.lightBackground)
-                            .padding(.vertical)
+                        DividerView()
                         
                         Text("Crew Members")
                             .font(.title .bold())
@@ -103,6 +104,6 @@ struct MissionView: View {
 #Preview {
     let missions: [Mission] = Bundle.main.decode("missions.json")
     let astronauts: [String:Astronaut] = Bundle.main.decode("astronauts.json")
-    return MissionView(mission: missions[0], astronauts: astronauts)
+    return MissionView(mission: missions[1], astronauts: astronauts)
         .preferredColorScheme(.dark)
 }
