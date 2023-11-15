@@ -50,6 +50,6 @@ struct GridMissionsView: View {
 
 #Preview {
     let missions: [Mission] = Bundle.main.decode("missions.json")
-    let astronauts: [String:Astronaut] = Bundle.main.decode("astronauts.json")
-    return GridMissionsView(missions: missions, astronauts: astronauts)
+    let astronauts: [String : Astronaut] = Bundle.main.decode("astronauts.json")
+    return GridMissionsView(missions: missions, astronauts: astronauts).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
 }

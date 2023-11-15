@@ -19,22 +19,13 @@ struct ListMissionsView: View {
                     NavigationLink{
                         MissionView(mission: mission, astronauts: astronauts)
                     } label: {
-                        VStack{
-                            HStack{
-                                Image(mission.image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 100, height: 100)
-                                VStack{
-                                    Text(mission.displayName)
-                                    
-                                    Text(mission.formattedLaunchDate)
-                                }
-                            }
-                        }
+                        MissionListItem(mission: mission)
+                    }.alignmentGuide(.listRowSeparatorLeading) { dimension in
+                        return 0
                     }
-                }
-            }
+                }.listRowBackground(Color.lightBackground)
+            }.scrollContentBackground(.hidden)
+                
         }
     }
 }
@@ -42,5 +33,5 @@ struct ListMissionsView: View {
 #Preview {
     let missions: [Mission] = Bundle.main.decode("missions.json")
     let astronauts: [String:Astronaut] = Bundle.main.decode("astronauts.json")
-    return ListMissionsView(missions: missions, astronauts: astronauts).preferredColorScheme(/*@START_MENU_TOKEN@*/.dark/*@END_MENU_TOKEN@*/)
+    return ListMissionsView(missions: missions, astronauts: astronauts).preferredColorScheme(.dark)
 }
