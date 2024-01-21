@@ -20,6 +20,8 @@ struct MissionListItem: View {
                 Text(mission.formattedLaunchDate)
             }
         }
+        .accessibilityElement()
+        .accessibilityLabel("\(mission.displayName), \(mission.formattedLaunchDate)")
     }
 }
 

@@ -41,6 +41,8 @@ struct GridMissionsView: View {
                         .clipShape(.rect(cornerRadius: 10))
                         .overlay(RoundedRectangle(cornerRadius: 10)
                             .stroke(.lightBackground))
+                        .accessibilityElement()
+                        .accessibilityLabel("\(mission.displayName), \(mission.formattedLaunchDate)")
                     }
                 }
             }.padding([.horizontal, .bottom])

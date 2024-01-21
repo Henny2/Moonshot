@@ -39,6 +39,7 @@ struct MissionView: View {
                             width * 0.6
                         }
                         .padding(.bottom)
+                        .accessibilityHidden(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                     VStack(alignment: .leading){
                         Text("Launch date: \(mission.formattedLaunchDate)").font(.headline)
                      
@@ -87,6 +88,8 @@ struct MissionView: View {
                                         }
                                     }
                                     .padding()
+                                    .accessibilityElement()
+                                    .accessibilityLabel("\(crewMember.astronaut.name), \(crewMember.role)")
                                 }
                             }
                         }
